@@ -58,14 +58,27 @@ const RESTAURANT = {
 app.get("/", (req, res) => {
   //   res.send('Hello There!');
   res.render("home.ejs", {
-   RESTAURANT: RESTAURANT,
+    RESTAURANT: RESTAURANT,
   });
 });
 
 app.get("/menu", (req, res) => {
-   res.render("menu.ejs", {
-      RESTAURANT: RESTAURANT,
-   });
+  res.render("menu.ejs", {
+    RESTAURANT: RESTAURANT,
+  });
+});
+
+app.get("/menu/:category", (req, res) => {
+  const course = req.params.category;
+  const courseItems = RESTAURANT.menu.filter(
+    (item) => item.category === course
+  );
+
+  res.render("category.ejs", {
+    RESTAURANT: RESTAURANT,
+    course: course,
+    courseItems: courseItems,
+  });
 });
 
 app.listen(3000);

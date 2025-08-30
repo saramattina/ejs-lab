@@ -7,7 +7,15 @@
 </head>
 <body>
    <%- include('./partials/nav') %>
+   <h1><%= RESTAURANT.name  %></h1>
   <h1>Full Menu</h1>
   
+<% RESTAURANT.menu.forEach((dish) => { %>
+  <h3><%= dish.name%></h3>
+  <p>Price: <%= dish.price %></p>
+  <p>Rating: <%= dish.rating %></p>
+  <p>Description: <%= dish.details %></p>
+<% }); %> 
+
 </body>
 </html>
